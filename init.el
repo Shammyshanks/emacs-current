@@ -138,6 +138,8 @@
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
+	 ("C-c n r" . org-roam-ref-add)
+	 ("C-c n r r" . org-roam-ref-remove)
          :map org-mode-map
          ("C-M-i"    . completion-at-point))
   :config
