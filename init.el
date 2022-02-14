@@ -33,7 +33,6 @@
 ;; Org-Agenda
 ;(setq org-agenda-files (quote ("~/agenda.org")))
 
-;; Dashboard
 (defun my/dashboard-banner ()
   """Set a dashboard banner including information on package initialization
    time and garbage collections."""
@@ -47,9 +46,10 @@
   (add-hook 'dashboard-mode-hook 'my/dashboard-banner)
   :config
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-center-content t)
   (dashboard-setup-startup-hook)
   :bind ("C-c d r b" . dashboard-refresh-buffer))
+
+
 
 
 
@@ -103,6 +103,7 @@
 (column-number-mode t)
 (display-time-mode 1);;show time in buffer
 (setq org-startup-indented t) ;;wraps text?
+(setq org-startup-folded t) ;; starts org folded
 
 
 ;; Enable copypasting outside of Emacs
