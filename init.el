@@ -19,6 +19,14 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
+(recentf-mode 1) ; find recent files
+(global-set-key (kbd "C-c r") 'recentf-open-files)
+(setq history-length 25)
+(savehist-mode 1)
+
 ;; pars rainbows
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -49,7 +57,13 @@
   (dashboard-setup-startup-hook)
   :bind ("C-c d r b" . dashboard-refresh-buffer))
 
-
+(use-package elfeed)
+(setq elfeed-feeds
+      '("https://lukesmith.xyz/rss.xml" linux
+        "https://planet.emacslife.com/atom.xml" emacs ))
+(setq-default elfeed-search-filter "@1-week-ago +unread ")
+(global-set-key (kbd "C-c e f") 'elfeed)
+(global-set-key (kbd "C-c e b") 'eval-buffer)
 
 
 
@@ -104,7 +118,11 @@
 (display-time-mode 1);;show time in buffer
 (setq org-startup-indented t) ;;wraps text?
 (setq org-startup-folded t) ;; starts org folded
+(add-hook 'text-mode-hook 'visual-line-mode)
 
+;; Tab Bar Mode
+(setq initial-major-mode 'org-mode);; create an org-mode *scratch* buffer
+(setq tab-bar-new-tab-choice "*scratch*")
 
 ;; Enable copypasting outside of Emacs
 (setq x-select-enable-clipboard t)
@@ -154,6 +172,12 @@
   :ensure t)
 (load-theme 'moe-light t)
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
