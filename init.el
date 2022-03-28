@@ -41,10 +41,11 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; Smex
-(unless (package-installed-p 'smex)
-    (package-install 'smex))
-(require 'smex) ; Not needed if you use package.el
-  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+(use-package smex)
+;(unless (package-installed-p 'smex)
+;    (package-install 'smex))
+;(require 'smex) ; Not needed if you use package.el
+;  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
 					; when Smex is auto-initialized on its first run.
 
 ;; Org-Agenda
@@ -146,9 +147,7 @@
 ;; Highlight current line
 (global-hl-line-mode t)
 
-(package-refresh-contents)
-(unless (package-installed-p 'org-journal)
-  (package-install 'org-journal)) 
+(use-package org-journal)
 
 (use-package org-roam
   :ensure t
