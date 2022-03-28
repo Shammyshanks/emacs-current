@@ -2,6 +2,8 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 . 50))
 (add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
+(use-package no-littering)
+(setq gc-cons-threshold (* 50 1000 1000))
 
 (require 'package)
 
@@ -63,9 +65,11 @@
   (add-hook 'after-init-hook 'dashboard-refresh-buffer)
   (add-hook 'dashboard-mode-hook 'my/dashboard-banner)
   :config
-  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner 'logo)	     
   (dashboard-setup-startup-hook)
   :bind ("C-c d r b" . dashboard-refresh-buffer))
+(setq dashboard-center-content t)
+
 
 (use-package elfeed)
 (setq elfeed-feeds
@@ -185,6 +189,7 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+(setq gc-cons-threshold (* 2 1000 1000))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
