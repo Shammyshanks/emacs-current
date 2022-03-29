@@ -78,6 +78,7 @@
 (setq-default elfeed-search-filter "@1-week-ago +unread ")
 (global-set-key (kbd "C-c e f") 'elfeed)
 (global-set-key (kbd "C-c e b") 'eval-buffer)
+(global-set-key (kbd "C-c q r") 'query-replace)
 
 
 
