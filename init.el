@@ -79,8 +79,8 @@
 (global-set-key (kbd "C-c e f") 'elfeed)
 (global-set-key (kbd "C-c e b") 'eval-buffer)
 (global-set-key (kbd "C-c q r") 'query-replace)
-
-
+(global-set-key (kbd "C-c r") 'recentf-open-files)
+(global-set-key (kbd "C-c d k") 'describe-key)
 
 
 ;; num pad keybind
@@ -106,7 +106,7 @@
 (use-package avy
   :ensure t
   :bind
-  ("M-s" . avy-goto-char))
+  ("<f22>" . avy-goto-char))
 
 ;; ido
 (setq ido-enable-flex-matching nil)
