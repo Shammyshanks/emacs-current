@@ -106,7 +106,7 @@
 (use-package avy
   :ensure t
   :bind
-  ("<f22>" . avy-goto-char))
+  ("<f20>" . avy-goto-char))
 
 ;; ido
 (setq ido-enable-flex-matching nil)
