@@ -192,6 +192,40 @@
   :init (doom-modeline-mode 1))
 (setq gc-cons-threshold (* 2 1000 1000))
 
+
+;; Tab Bar Mode
+(setq initial-major-mode 'org-mode);; create an org-mode *scratch* buffer
+(setq tab-bar-new-tab-choice "*scratch*")
+(global-set-key (kbd "C-c b") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "C-c f") 'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "C-c t") 'tab-bar-new-tab)
+(global-set-key (kbd "C-c w") 'tab-bar-close-tab)
+
+;; Emojify
+(use-package emojify
+  :hook (after-init . global-emojify-mode))
+(add-hook 'after-init-hook #'global-emojify-mode)
+
+(use-package linum-relative)
+(linum-on)
+
+;;rainbow mode
+(use-package rainbow-mode)
+(define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
+  (lambda () (rainbow-mode 1)))
+(my-global-rainbow-mode 1)
+
+;;Org
+(use-package org-journal)
+
+;; Example of how to insert text
+(defun my-insert-snippet ()
+  "Insert snippet and move point."
+  (interactive)
+  (insert "{Blah Blah}")
+  (backward-word 2)) ;; change 2 to number of words in above line
+(global-set-key (kbd "C-c s") 'my-insert-snippet)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
